@@ -235,7 +235,7 @@ end
 # To develop a gem locally and override its source to a checked out repo
 #   you can use this helper method in Gemfile.dev.rb e.g.
 #
-# override_gem 'manageiq-ui-classic', :path => File.expand_path("../manageiq-ui-classic", __dir__)
+
 #
 def override_gem(name, *args)
   if dependencies.any?
@@ -249,6 +249,10 @@ def override_gem(name, *args)
   end
 end
 
+override_gem 'manageiq-ui-classic', :path => File.expand_path("../manageiq-ui-classic", __dir__)
+
 # Load other additional Gemfiles
 #   Developers can create a file ending in .rb under bundler.d/ to specify additional development dependencies
 Dir.glob(File.join(__dir__, 'bundler.d/*.rb')).each { |f| eval_gemfile(File.expand_path(f, __dir__)) }
+
+gem 'miq_experimental_ui', :path => File.expand_path('../miq_experimental_ui_plugin/', __dir__)
